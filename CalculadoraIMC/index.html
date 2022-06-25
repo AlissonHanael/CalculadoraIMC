@@ -1,51 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Calculadora IMC</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-
-<body>
-
-  <section class="container">
-    <h1>Tabela IMC</h1>
-    
-      <table>
-        <tr>
-         <td>Menor que 18,5</td>
-         <td>Entre 18,5 e 24,9</td>
-         <td>Entre 25,0 e 29,9</td>
-         <td>Entre 30,0 e 34,9</td>
-         <td>Entre 35,0 e 39,9</td>
-         <td>Maior que 40,0</td>
-        </tr>
-        <tr>
-          <td>- Abaixo do Peso</td>
-          <td>- Normal</td>
-          <td>- Sobrepeso</td>
-          <td>- Obesidade	I</td>
-          <td>- Obesidade	II</td>
-          <td> - Obesidade	III</td>
-        </tr>
-      </table>
-      <div class="info">
-        <form action="" id="formulario" method="post">
-          <label>Peso:</label>
-          <input type="text" id="peso">
-          <label>Altura: (em centimetros)</label>
-          <input type="text" id="altura">
-          <button type="submit" onclick="" >Enviar</button>
-        </form>
-        <div class="resultado" id="resultado"></div>
-      </div>
-
-  </section>
-
-  <script src="./assets/js/main.js"></script>
-</body>
-
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Calculadora IMC</title>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+	<body>
+		<section class="container">
+			<h1>Tabela IMC</h1>
+			<div class="tabela">
+				<p>Menor que 18,5 - Abaixo do Peso</p>
+				<p>Entre 18,5 e 24,9 - Normal</p>
+				<p>Entre 25,0 e 29,9 - Sobrepeso</p>
+				<p>Entre 30,0 e 34,9 - Obesidade I </p>
+				<p>Entre 35,0 e 39,9 - Obesidade II </p>
+				<p>Maior que 40,0 - Obesidade III</p>
+			</div>
+			<div class="info">
+				<form action="" id="formulario" method="post">
+					<label>Peso:</label>
+					<input type="text" id="peso" />
+					<label>Altura: (em centimetros)</label>
+					<input type="text" id="altura" />
+					<button type="submit" onclick="">Enviar</button>
+				</form>
+				<div class="resultado" id="resultado"></div>
+			</div>
+		</section>
+		<script src="./assets/js/main.js"></script>
+	</body>
 </html>

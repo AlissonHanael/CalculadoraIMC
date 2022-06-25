@@ -1,36 +1,60 @@
-const pesoString = document.getElementById('peso')
-const alturaString = document.getElementById('altura')
-const form = document.querySelector('#formulario')
+const pesoString = document.getElementById("peso")
+const alturaString = document.getElementById("altura")
+const form = document.querySelector("#formulario")
+const resultado = document.querySelector("#resultado")
 
-form.addEventListener('submit', (e)=>{
-    e.preventDefault()
-    const peso = Number(pesoString.value)
-    const altura = Number(alturaString.value)
-    calcImc(peso, altura)
-})
-function setResult(result){
-    const resultado = document.querySelector('#resultado')
-    resultado.innerHTML = result
+function isValid(peso, altura) {
+	let validated = true
+	resultado.classList.remove("good")
+	resultado.classList.remove("bad")
+	if (isNaN(peso) || peso === 0) {
+		resultado.classList.add("bad")
+		resultado.innerHTML = `<p>Digite um peso válido</p>`
+		validated = false
+	}
+	if (isNaN(altura) || altura === 0) {
+		resultado.classList.add("bad")
+		resultado.innerHTML = `<p>Digite uma altura válida</p>`
+		validated = false
+	}
+	return validated
 }
-function calcImc(peso, altura){
-    let imc = peso/((altura/100)**2)
-    if(imc<18.5){
-        let msg = `<p>Seu imc é ${imc.toFixed(2)}, você está abaixo do peso ideal</p>`
-        setResult(msg) 
-    }else if(imc>=18.5 && imc<24.9){
-        let msg = `<p>Seu imc é ${imc.toFixed(2)}, você está no peso ideal</p>`
-        setResult(msg) 
-    }else if(imc>=25 && imc<29.9){
-        let msg = `<p>Seu imc é ${imc.toFixed(2)}, você está com sobrepeso</p>`
-        setResult(msg) 
-    }else if(imc>=30 && imc<34.9){
-        let msg = `<p>Seu imc é ${imc.toFixed(2)}, você está com obesidade de grau I</p>`
-         setResult(msg) 
-    }else if(imc>=35 && imc<39.9){
-        let msg = `<p>Seu imc é ${imc.toFixed(2)}, você com obesidade de grau II</p>`
-        setResult(msg) 
-    }else if(imc>=40){
-        let msg = `<p>Seu imc é ${imc.toFixed(2)}, vocêcom obesidade de grau III</p>`
-        setResult(msg) 
-    }
+
+form.addEventListener("submit", (e) => {
+	e.preventDefault()
+	const peso = Number(pesoString.value)
+	const altura = Number(alturaString.value)
+	if (isValid(peso, altura)) return
+	const resultadoImc = calcImc(peso, altura)
+	setResult(resultadoImc)
+})
+function setResult(result) {
+	resultado.innerHTML = result
+	resultado.classList.add("good")
+}
+
+function calcImc(peso, altura) {
+	let imc = peso / (altura / 100) ** 2
+	return verificaImc(imc)
+}
+
+function verificaImc(imc) {
+	if (imc < 18.5) {
+		return `<p>Seu imc é ${imc.toFixed(2)}, você está abaixo do peso ideal</p>`
+	}
+	if (imc >= 18.5 && imc < 24.9) {
+		return `<p>Seu imc é ${imc.toFixed(2)}, você está no peso ideal</p>`
+	}
+	if (imc >= 25 && imc < 29.9) {
+		return `<p>Seu imc é ${imc.toFixed(2)}, você está com sobrepeso</p>`
+	}
+	if (imc >= 30 && imc < 34.9) {
+		return `<p>Seu imc é ${imc.toFixed(2)}, você está com obesidade de grau I</p>`
+	}
+	if (imc >= 35 && imc < 39.9) {
+		return `<p>Seu imc é ${imc.toFixed(2)}, você com obesidade de grau II</p>`
+	}
+	if (imc >= 40) {
+		return `<p>Seu imc é ${imc.toFixed(2)}, vocêcom obesidade de grau III</p>`
+	}
 }
