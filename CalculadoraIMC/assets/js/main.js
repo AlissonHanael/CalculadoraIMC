@@ -24,7 +24,7 @@ form.addEventListener("submit", (e) => {
 	e.preventDefault()
 	const peso = Number(pesoString.value)
 	const altura = Number(alturaString.value)
-	if (isValid(peso, altura)) return
+	if (!isValid(peso, altura)) return
 	const resultadoImc = calcImc(peso, altura)
 	setResult(resultadoImc)
 })
